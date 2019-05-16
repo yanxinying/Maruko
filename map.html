@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>mapInterviewQuestion</title>
+</head>
+<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+<style type="text/css">
+  body {
+    padding: 0;
+    margin: 0;
+  }
+  html, body, #map {
+    height: 100%;
+    width: 100vw;
+  }
+</style>
+<body>
+<!-- 地图容器 -->
+<div id="map"></div>
+<script type="text/javascript">
+  // 加载地图
+  var southWest = [30.192766592114, 120.053100585938] // 地图左下角坐标
+    , northEast = [30.194398687118, 120.054302215576] // 地图右上角坐标
+    , bounds = L.latLngBounds(southWest, northEast); // 地图边界
+  var map = L.map('map',{
+    zoomControl: false, // 隐藏默认缩放按钮
+    detectRetina: true,
+  }).setView(["30.193386", "120.053739"], 18);
+  // 添加标注
+  var marker = L.marker([30.193386, 120.053739]).addTo(map);
+  marker.bindPopup("<b>景点</b>").openPopup();
+  // 添加图片作为地图
+  var url = 'https://map.365daoyou.cn/cm/fileOpviewFile?fileName=mimi-001_1543228365973-vggcym8r.jpg';
+  L.imageOverlay(url, bounds).addTo(map);
+</script>
+</body>
+</html>
